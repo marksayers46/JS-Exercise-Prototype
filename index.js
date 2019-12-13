@@ -93,17 +93,25 @@ Car.prototype.fill = function(gallons) {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
-  
+  Person.call(this, name, age, favoriteToy);
+  this.favoriteToy = favoriteToy;
+
 }
 
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}`;
+}
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1.  Global Binding - "this" belogs to the global (window/console/?) object.
+  2.  Implicit Binding - If a function is called as part of an object (a method of an object) "this" belongs to the object that called the function.  
+  3.  New Binding - Using a constructor function to create an instance of an object "this" refers to the specific instance created by the constructor.  
+  4.  Explicit Binding - Using the call or apply method explicitly specifies the object "this" belongs to.
+
 */
 
 
